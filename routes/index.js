@@ -10,7 +10,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/names', function(req, res, next) {
-  const client = new pg.Client(process.env.DATABASE_URL)
+  console.log(process.env.DATABASE_URL);
+  const client = new pg.Client(process.env.DATABASE_URL, (err, res) => {
+    console.log("connected!")
+  });
   // await client.connect(process.env.DATABASE_URL);
   // res = await client.query('SELECT first_name FROM sample_pii');
   // res.send(res);
