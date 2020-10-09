@@ -12,4 +12,9 @@ router.get('/all', async function(req, res, next) {
   res.send(results.rows)
 })
 
+router.get('/ca', async function(req, res, next) {
+  results = await db.query('SELECT * FROM sample_pii WHERE state = $1', ['CA']) 
+  res.send(results.rows)
+})
+
 module.exports = router;
