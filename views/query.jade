@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    script(src='../javascripts/jquery.js', type='text/javascript')
+    script(src='../javascripts/query.js', type='text/javascript')     
+  body
+    div 
+        form
+            div
+                input(id='query', name='query', type='text', value='')
+            div
+            div 
+                input(type='button', onClick='submitQuery()', value='Query')
+                input(type='button', onClick='submitToken()', value='Token')
+            div
+    div
+        p(id='results')
+
