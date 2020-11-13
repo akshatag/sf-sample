@@ -30,3 +30,18 @@ function submitToken() {
         data: JSON.stringify({'token' : $('#query').val()})
     });
 }
+
+function submitPersonId() {
+    $.ajax({
+        url: '/vault/person/' + $('#query').val(),
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(data) {
+            $('#results').text(JSON.stringify(data))
+        },
+        error: function(data) {
+            $('#results').text('bad query! try again!')
+        }
+    });
+}

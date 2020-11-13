@@ -23,11 +23,13 @@ router.get('/people', async function(req, res, next) {
     res.send(JSON.stringify(vault.data))
 });
 
-/* test endpoint */ 
-router.get('/test', async function(req, res, next) {
+/* Get token data for PERSON skyflow_id */ 
+router.get('/person/:id', async function(req, res, next) {
+    console.log('sending req for: ' + req.params.id)
+    
     params = {
         method: 'get',
-        url: (VAULT_API_URL + '/persons/73850804-14d5-11eb-965f-b295f05263ab?dlp=TOKEN'),
+        url: (VAULT_API_URL + '/persons/' + req.params.id + '?dlp=TOKEN'),
         headers: { 
             'Content-Type' : 'application/json',
         }
@@ -72,8 +74,6 @@ router.post('/token', async function(req, res, next) {
         url: (VAULT_API_URL + '/tokens/' + req.body.token + '?dlp=PLAIN_TEXT'),
         headers: {
             'Content-Type' : 'application/json',
-            // 'accept' : 'application/json, text/plain, */*',
-            // 'x-request-id' : req.body.token
         }
     }
     try { 
@@ -84,5 +84,35 @@ router.post('/token', async function(req, res, next) {
         res.status(500).send()
     }
 })
+
+
+/*
+require('axios')
+
+params = {
+    method: 'post',
+    url: (VAULT_API_URL + '/query'),
+    headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : 'Bearer: ' + AUTH_TOKEN
+    },
+    data: {
+        vaultID : VAULT_ID,
+        query: QUERY
+    }
+}
+
+res = await axios.get(params)
+...
+
+*/
+
+
+require('skyflow')
+
+CIVault = skyflow.CustomerIdentityVault(WORKSPACE_URL, VAULT_ID, FILEPATH_TO_CREDS.JSON)
+
+res1 = await CIVault.getPerson(personId)
+
 
 module.exports = router;

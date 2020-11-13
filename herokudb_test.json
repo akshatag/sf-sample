@@ -1,0 +1,42 @@
+[
+    {
+        "ssn": "172-32-1176",
+        "gender": "m",
+        "birthdate": "1958-04-21T08:00:00.000Z",
+        "maiden_name": "Smith",
+        "last_name": "White",
+        "first_name": "Johnson",
+        "address": "10932 Bigge Rd",
+        "city": "Menlo Park",
+        "state": "CA",
+        "zip": "94025",
+        "phone": "408 496-7223",
+        "email": "jwhite@domain.com",
+        "cc_type": "m",
+        "cc_num": "5270-4267-6450-5516",
+        "cc_cvc": "123",
+        "cc_expire": "2010-06-25T07:00:00.000Z",
+        "migrated": 1,
+        "skyflow_id": "282f07fb-18c1-11eb-a280-b26424ea07b1"
+    },
+    {
+        "ssn": "514-14-8905",
+        "gender": "f",
+        "birthdate": "1944-12-22T07:00:00.000Z",
+        "maiden_name": "Amaker",
+        "last_name": "Borden",
+        "first_name": "Ashley",
+        "address": "4469 Sherman Street",
+        "city": "Goff",
+        "state": "KS",
+        "zip": "66428",
+        "phone": "785-939-6046",
+        "email": "aborden@domain.com",
+        "cc_type": "m",
+        "cc_num": "5370-4638-8881-3020",
+        "cc_cvc": "713",
+        "cc_expire": "2011-02-01T08:00:00.000Z",
+        "migrated": 1,
+        "skyflow_id": "28622bea-18c1-11eb-be28-52d83c8be471"
+    }
+]
