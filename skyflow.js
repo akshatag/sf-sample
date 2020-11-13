@@ -69,7 +69,7 @@ async function sendVaultRequest(params) {
     } catch (error) { 
         if (error.response) {
             if(error.response.status == 403) {
-                await refreshBearerToken()
+                await refreshBearerToken(forceRefresh = 1)
                 return sendVaultRequest(params)
             }
             console.log('Server responded with error: ' + error.response.status)

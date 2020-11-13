@@ -86,33 +86,37 @@ router.post('/token', async function(req, res, next) {
 })
 
 
-/*
+
 require('axios')
 
 params = {
     method: 'post',
-    url: (VAULT_API_URL + '/query'),
+    url: (VAULT_API_URL + '/persons/' + PERSONS_ID + '?dlp=TOKEN'),
     headers: {
         'Content-Type' : 'application/json',
         'Authorization' : 'Bearer: ' + AUTH_TOKEN
     },
-    data: {
-        vaultID : VAULT_ID,
-        query: QUERY
+}
+try { 
+    res = await axios.get(params)
+} catch (error) { 
+    if (error.status == 401) {
+        ...
     }
 }
-
-res = await axios.get(params)
 ...
 
-*/
+
 
 
 require('skyflow')
 
-CIVault = skyflow.CustomerIdentityVault(WORKSPACE_URL, VAULT_ID, FILEPATH_TO_CREDS.JSON)
+CIVault = skyflow.CustomerIdentityVault(WORKSPACE_URL, 
+    VAULT_ID, FILEPATH_TO_CREDS.JSON)
 
-res1 = await CIVault.getPerson(personId)
+res1 = await CIVault.getPerson(PERSON_ID)
+
+
 
 
 module.exports = router;
