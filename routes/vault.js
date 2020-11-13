@@ -86,7 +86,7 @@ router.post('/token', async function(req, res, next) {
 })
 
 
-
+/*
 require('axios')
 
 params = {
@@ -105,17 +105,17 @@ try {
     }
 }
 ...
+*/
 
 
-
-
+/*
 require('skyflow')
 
 CIVault = skyflow.CustomerIdentityVault(WORKSPACE_URL, 
     VAULT_ID, FILEPATH_TO_CREDS.JSON)
 
 res1 = await CIVault.getPerson(PERSON_ID)
-
+*/
 
 
 
