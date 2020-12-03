@@ -1,7 +1,7 @@
 
 function submitQuery() {        
     $.ajax({
-        url: 'https://piidata.encrypt.evervault.com/vault/query',
+        url: '/vault/query',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
