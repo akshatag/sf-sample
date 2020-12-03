@@ -1,7 +1,7 @@
 
 function submitQuery() {        
     $.ajax({
-        url: '/vault/query',
+        url: 'https://piidata.encrypt.evervault.com/vault/query',
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -11,7 +11,7 @@ function submitQuery() {
         error: function(data) {
             $('#results').text('bad query! try again!')
         },
-        data: JSON.stringify({'query' : $('#query').val()})
+        data: JSON.stringify({'query' : $('#query').val(), 'pii' : 'Akshat'})
     });
 }
 

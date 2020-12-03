@@ -1,26 +1,42 @@
 var express = require('express');
 var router = express.Router();
 const sf = require('../skyflow')
+const skyflow = require('skyflow-node');
+const fs = require('fs')
+
 
 const BASE_URL = 'https://sb.area51.vault.skyflowapis.com/'
 const VAULT_ID = 'j5ab140014d511eb86221204b52839c4'
 const VAULT_API_URL = BASE_URL + 'v1/vaults/' + VAULT_ID
 
+
+
 /* get all data from PERSONS table */
 router.get('/people', async function(req, res, next) {
-    params = {
-        method: 'post',
-        url: (VAULT_API_URL + '/query'),
-        headers: { 
-            'Content-Type' : 'application/json',
-        },
-        data: {
-            query: "select * from persons;"
-        }
-    }
+    // params = {
+    //     method: 'post',
+    //     url: (VAULT_API_URL + '/query'),
+    //     headers: { 
+    //         'Content-Type' : 'application/json',
+    //     },
+    //     data: {
+    //         query: "select * from persons;"
+    //     }
+    // }
 
-    vault = await sf.sendVaultRequest(params)
-    res.send(JSON.stringify(vault.data))
+    // vault = await sf.sendVaultRequest(params)
+    // res.send(JSON.stringify(vault.data))
+
+    let credsRaw = fs.readFileSync('./credentials.json')
+    let creds = JSON.parse(credsRaw)
+
+    client = skyflow.connect(WORKSPACE_URL, VAULT_ID, CREDENTIALS)
+    
+    rows = await client.getRecords('persons')
+    res.send(rows)
+        // .then(res => console.log('res: ' + res)) 
+        // .catch(err => console.log('error: ' + err.data.error))
+    
 });
 
 /* Get token data for PERSON skyflow_id */ 
